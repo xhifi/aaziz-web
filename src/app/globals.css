@@ -2,32 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  @apply box-border;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+@layer components {
+  .noise {
+    filter: url("#noise");
+  }
+}
+
+.container-responsive {
+  @apply container px-4 md:px-12 mx-auto;
+}
+
+.revoke-border-last-three:nth-last-child(-n + 3) {
+  @apply border-b-0;
+}
+.revoke-border-third:nth-child(3n) {
+  @apply border-r-0;
+}
+.revoke-border-last:nth-last-child(1) {
+  @apply border-b-0;
 }
